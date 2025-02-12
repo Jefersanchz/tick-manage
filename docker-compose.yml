@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  tick-manage-app:
+    build: .
+    ports:
+      - "9000:9000"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://35.193.24.153:3306/ticket-manage
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ticketadmin
+    depends_on:
+      - tick-manage-db
+
+  tick-manage-db:
+    image: mysql:8.0
+    container_name: tick-manage-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: ticket-manage
+      MYSQL_ROOT_PASSWORD: ticketadmin
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
