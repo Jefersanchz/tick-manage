@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@CrossOrigin(origins = "*")
+
 @RestController
 @RequestMapping(PathGeneric.PATH_API_GITHUB)  // Base path for GitHub API
 @RequiredArgsConstructor
